@@ -91,15 +91,6 @@ async function main() {
 				res.redirect("/" + listName);
 			});
 		}
-
-		// console.log(req.body);
-		// if (req.body.list === "Work List") {
-		// 	workItems.push(newItem);
-		// 	res.redirect("/work");
-		// } else {
-		// 	items.push(newItem);
-		// 	res.redirect("/");
-		// }
 	});
 	app.post("/delete", (req, res) => {
 		const checkedItemId = req.body.checkbox;
@@ -160,8 +151,10 @@ async function main() {
 	// 	res.redirect("/work");
 	// });
 }
-app.listen(process.env.PORT || 3000, function () {
-	console.log("server is running ON Port 3000");
+let port = process.env.PORT;
+if (port == null || port == "") {
+	port = 3000;
+}
+app.listen(port, () => {
+	console.log("Server is running ON Port 3000");
 });
-// const workItems = [];
-// const items = ["Buy Food", "Cook Food", "Eat Food"];
